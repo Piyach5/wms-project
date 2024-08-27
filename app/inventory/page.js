@@ -16,41 +16,45 @@ function Inventory() {
 
   const options = [{ option: "create new item", href: "/" }];
 
-  return loading || data == null ? (
-    <p>Loading...</p>
-  ) : error ? (
-    <p>Error</p>
-  ) : (
+  return (
     <main className="flex flex-row">
       <SideBar options={options} />
-      <div className="flex flex-col px-20 py-10 bg-secondary">
+      <div className="w-screen flex flex-col px-20 py-10 bg-secondary">
         <h2 className="text-secondary-foreground text-center font-secondary font-extrabold">
           Item List
         </h2>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>TITLE</TableHead>
-              <TableHead>UPC</TableHead>
-              <TableHead>QUANTITY</TableHead>
-              <TableHead>PRICE</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data.map((item) => (
-              <TableRow
-                className="cursor-pointer"
-                key={item.id}
-                onClick={() => window.location.replace(`/inventory/${item.id}`)}
-              >
-                <TableCell className="">{item.title}</TableCell>
-                <TableCell>{item.upc}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>${item.price}</TableCell>
+        {loading || data == null ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error</p>
+        ) : (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>TITLE</TableHead>
+                <TableHead>UPC</TableHead>
+                <TableHead>QUANTITY</TableHead>
+                <TableHead>PRICE</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {data.map((item) => (
+                <TableRow
+                  className="cursor-pointer"
+                  key={item.id}
+                  onClick={() =>
+                    window.location.replace(`/inventory/${item.id}`)
+                  }
+                >
+                  <TableCell className="">{item.title}</TableCell>
+                  <TableCell>{item.upc}</TableCell>
+                  <TableCell>{item.quantity}</TableCell>
+                  <TableCell>${item.price}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </div>
     </main>
   );

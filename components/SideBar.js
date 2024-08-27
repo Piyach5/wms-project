@@ -1,8 +1,14 @@
 export default function SideBar({ options }) {
   return (
     <>
-      <div className="min-h-screen py-10 px-10 flex flex-col items-start bg-primary">
+      <div className="min-w-[20%] min-h-screen py-10 px-10 flex flex-col items-start bg-primary">
         <div>
+          <option
+            className="cursor-pointer text-secondary font-secondary uppercase"
+            onClick={() => window.location.replace("/")}
+          >
+            home
+          </option>
           <option
             className="cursor-pointer text-secondary font-secondary uppercase"
             onClick={() => window.location.replace("/inbound")}
