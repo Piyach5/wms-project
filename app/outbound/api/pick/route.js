@@ -15,7 +15,10 @@ export async function PUT(request) {
         },
         { status: 404 }
       );
-    } else if (checkUpc.rows[0]["quantity"] <= 0) {
+    } else if (
+      checkUpc.rows[0]["quantity"] <= 0 ||
+      checkUpc.rows[0]["quantity"] < itemData.quantity
+    ) {
       return NextResponse.json(
         {
           message: "Out of Stock",
