@@ -8,8 +8,6 @@ export async function PUT(request) {
       `SELECT * FROM items WHERE upc = $1`,
       [itemData.upc]
     );
-
-    console.log(checkUpc.rows[0]);
     if (!checkUpc.rows[0]) {
       return NextResponse.json(
         {
