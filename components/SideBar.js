@@ -29,7 +29,7 @@ export default function SideBar({ options }) {
           </option>
           <option
             className="cursor-pointer text-secondary font-secondary uppercase"
-            onClick={() => window.location.replace("/")}
+            onClick={() => window.location.replace("/outbound")}
           >
             outbound
           </option>
