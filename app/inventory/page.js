@@ -14,7 +14,7 @@ import {
 function Inventory() {
   const { data, error, loading } = useFetch("/inventory/api/items");
 
-  const options = [{ option: "create new item", href: "/" }];
+  const options = [{ option: "create new item", href: "/createItem" }];
 
   return (
     <main className="flex flex-row">

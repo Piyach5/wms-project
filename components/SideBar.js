@@ -36,15 +36,19 @@ export default function SideBar({ options }) {
         </div>
         <hr className="w-full mt-5 border-black border-2" />
         <div className="mt-5">
-          {options.map((item, index) => (
-            <option
-              className="cursor-pointer text-secondary font-secondary uppercase"
-              key={index}
-              onClick={() => window.location.replace(item.href)}
-            >
-              {item.option}
-            </option>
-          ))}
+          {options ? (
+            options.map((item, index) => (
+              <option
+                className="cursor-pointer text-secondary font-secondary uppercase"
+                key={index}
+                onClick={() => window.location.replace(item.href)}
+              >
+                {item.option}
+              </option>
+            ))
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

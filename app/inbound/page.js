@@ -12,7 +12,7 @@ function Inbound() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const options = [{ option: "create new item", href: "/" }];
+  const options = [{ option: "create new item", href: "/createItem" }];
 
   const updateItem = async (e, data) => {
     e.preventDefault();
