@@ -3,6 +3,8 @@
 import SideBar from "@/components/SideBar";
 import GoogleChart from "@/components/Chart";
 import useFetch from "@/hooks/useFetch";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 export default function Home() {
   const { data: items } = useFetch("/inventory/api/items");
@@ -20,7 +22,21 @@ export default function Home() {
           dashboard
         </div>
         <div>
-          {items != null ? <GoogleChart data={items} /> : <p>Loading...</p>}
+          {items != null ? (
+            <GoogleChart data={items} />
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                mt: 20,
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          )}
         </div>
       </div>
     </main>

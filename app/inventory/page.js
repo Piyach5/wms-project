@@ -10,9 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function Inventory() {
-  const { data, error, loading } = useFetch("/inventory/api/items");
+  const { data, error, loading } = useFetch("/api/items");
 
   const options = [{ option: "create new item", href: "/createItem" }];
 
@@ -24,7 +26,17 @@ function Inventory() {
           Item List
         </h2>
         {loading || data == null ? (
-          <p>Loading...</p>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              mt: 20,
+            }}
+          >
+            <CircularProgress />
+          </Box>
         ) : error ? (
           <p>Error</p>
         ) : (

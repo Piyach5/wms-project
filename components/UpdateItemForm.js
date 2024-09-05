@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
@@ -53,37 +53,55 @@ const formSchema = z.object({
       .max(9999, { message: "Price can't exceed 9999" })
   ),
   image: z.preprocess(
-    (value) => (value instanceof File ? value : undefined),
+    (value) => (value instanceof File ? value : value),
     z.instanceof(File, { message: "Please select a valid image file" })
   ),
 });
 
-function CreateItemForm() {
+function UpdateItem(data) {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const { id, title, upc, description, quantity, price, category, image } =
+    data.data[0];
+
+  const imageUrlToFile = async () => {
+    const response = await fetch(image);
+    const blob = await response.blob();
+    const file = new File([blob], "image.jpg", { type: blob.type });
+    const url = window.URL.createObjectURL(file);
+    setPreviewUrl(url);
+    return file;
+  };
+
+  let file;
+
+  useEffect(() => {
+    file = imageUrlToFile();
+  }, []);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      upc: "",
-      category: categories[0],
-      description: "",
-      quantity: "",
-      price: "",
-      image: null,
+      title: title,
+      upc: upc,
+      category: categories[categories.indexOf(category)],
+      description: description,
+      quantity: quantity,
+      price: String(price),
+      image: imageUrlToFile(),
     },
   });
 
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:3000/api/items", values, {
+      await axios.put(`http://localhost:3000/api/items/${id}`, values, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      toast.success("Item Created!");
+      toast.success("Item Updated Successfully!");
       setLoading(false);
-      setTimeout(() => window.location.replace("/inventory"), 3000);
+      setTimeout(() => window.location.replace(`/inventory/${id}`));
     } catch (err) {
       setLoading(false);
       toast.error(err.message);
@@ -201,15 +219,11 @@ function CreateItemForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Image</FormLabel>
-              {previewUrl == null ? (
-                <></>
-              ) : (
-                <img
-                  src={previewUrl}
-                  alt="Product Image"
-                  className="w-[100px] h-[100px]"
-                />
-              )}
+              <img
+                src={previewUrl}
+                alt="Product Image"
+                className="w-[100px] h-[100px]"
+              />
               <FormControl>
                 <Input
                   type="file"
@@ -246,4 +260,4 @@ function CreateItemForm() {
   );
 }
 
-export default CreateItemForm;
+export default UpdateItem;

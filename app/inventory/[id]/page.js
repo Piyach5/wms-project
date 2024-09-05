@@ -3,30 +3,63 @@
 import SideBar from "@/components/SideBar";
 import useFetch from "@/hooks/useFetch";
 import { Button } from "@/components/ui/button";
+import UpdateItem from "@/components/UpdateItemForm";
+import { useState } from "react";
+import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function Item({ params }) {
-  const { data, error, loading } = useFetch(
-    `/inventory/api/items/${params.id}`
-  );
+  const [isClick, setIsClick] = useState(false);
 
-  const options = [{ option: "create new item", href: "/" }];
+  const { data, error, loading } = useFetch(`/api/items/${params.id}`);
+
+  const options = [{ option: "create new item", href: "/createItem" }];
+
+  const deleteItem = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/api/items/${params.id}`);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <main className="flex flex-row">
       <SideBar options={options} />
       <div className="w-full flex flex-col px-20 py-10 bg-secondary">
         {loading || data == null ? (
-          <p>Loading...</p>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              mt: 20,
+            }}
+          >
+            <CircularProgress />
+          </Box>
         ) : error ? (
           <p>Error</p>
+        ) : isClick ? (
+          <div>
+            <div className="flex flex-row justify-start items-center gap-5 mb-10">
+              <Button onClick={() => setIsClick(!isClick)}>Back</Button>
+              <h2 className="text-secondary-foreground text-left font-secondary font-extrabold">
+                Update Item
+              </h2>
+            </div>
+            <UpdateItem data={data} />
+          </div>
         ) : (
-          data.map((item) => (
-            <div className="flex flex-col gap-5">
-              <div className="flex flex-row justify-between gap-5">
+          data.map((item, index) => (
+            <div className="flex flex-col gap-5" key={index}>
+              <div className="flex flex-row justify-start items-center gap-5 mb-5">
                 <Button onClick={() => window.location.replace("/inventory")}>
                   BACK
                 </Button>
-                <h2 className="text-secondary-foreground text-left font-secondary font-extrabold mb-5">
+                <h2 className="text-secondary-foreground text-left font-secondary font-extrabold">
                   {item.title}
                 </h2>
               </div>
@@ -51,8 +84,10 @@ function Item({ params }) {
                     </p>
                   </div>
                   <div className="flex flex-row gap-5">
-                    <Button>UPDATE ITEM</Button>
-                    <Button>DELETE ITEM</Button>
+                    <Button onClick={() => setIsClick(!isClick)}>
+                      UPDATE ITEM
+                    </Button>
+                    <Button onClick={() => deleteItem()}>DELETE ITEM</Button>
                   </div>
                 </div>
               </div>

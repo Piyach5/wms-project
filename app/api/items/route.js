@@ -2,6 +2,20 @@ import connectionPool from "@/utils/db";
 import { NextResponse } from "next/server";
 import { uploadFile } from "@/utils/supabase.config";
 
+export async function GET(request) {
+  try {
+    const result = await connectionPool.query(
+      `SELECT *, items.id FROM items INNER JOIN categories ON categories.id = items.categories`
+    );
+    return NextResponse.json({
+      message: "Data Read Succeessfully",
+      data: result.rows,
+    });
+  } catch (err) {
+    return NextResponse.json({ message: err.message });
+  }
+}
+
 export async function POST(request) {
   try {
     const formData = await request.formData();
@@ -15,7 +29,7 @@ export async function POST(request) {
     );
     await connectionPool.query(
       `INSERT INTO items (title, upc, categories, image, description, quantity, price)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [
         formData.get("title"),
         formData.get("upc"),
