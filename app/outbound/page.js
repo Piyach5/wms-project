@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-function Outbound() {
+export default function Outbound() {
   const [upc, setUpc] = useState(null);
   const [quantity, setQuantity] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -79,5 +79,3 @@ function Outbound() {
     </main>
   );
 }
-
-export default Outbound;

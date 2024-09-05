@@ -4,7 +4,7 @@ import CreateItemForm from "@/components/CreateItemForm";
 import SideBar from "@/components/SideBar";
 import { Button } from "@/components/ui/button";
 
-function CreateItem() {
+export default function CreateItem() {
   return (
     <main className="flex flex-row">
       <SideBar />
@@ -22,5 +22,3 @@ function CreateItem() {
     </main>
   );
 }
-
-export default CreateItem;

@@ -58,7 +58,7 @@ const formSchema = z.object({
   ),
 });
 
-function CreateItemForm() {
+export default function CreateItemForm() {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -245,5 +245,3 @@ function CreateItemForm() {
     </Form>
   );
 }
-
-export default CreateItemForm;

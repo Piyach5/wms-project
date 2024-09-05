@@ -58,7 +58,7 @@ const formSchema = z.object({
   ),
 });
 
-function UpdateItem(data) {
+export default function UpdateItem(data) {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -259,5 +259,3 @@ function UpdateItem(data) {
     </Form>
   );
 }
-
-export default UpdateItem;

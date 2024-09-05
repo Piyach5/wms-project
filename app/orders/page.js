@@ -2,7 +2,7 @@
 
 import SideBar from "@/components/SideBar";
 
-function Orders() {
+export default function Orders() {
   const options = [{ option: "create new item", href: "/" }];
 
   return (
@@ -16,5 +16,3 @@ function Orders() {
     </main>
   );
 }
-
-export default Orders;

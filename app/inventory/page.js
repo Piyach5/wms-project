@@ -13,7 +13,7 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-function Inventory() {
+export default function Inventory() {
   const { data, error, loading } = useFetch("/api/items");
 
   const options = [{ option: "create new item", href: "/createItem" }];
@@ -71,5 +71,3 @@ function Inventory() {
     </main>
   );
 }
-
-export default Inventory;

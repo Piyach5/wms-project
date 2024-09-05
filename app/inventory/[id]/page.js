@@ -9,7 +9,7 @@ import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-function Item({ params }) {
+export default function Item({ params }) {
   const [isClick, setIsClick] = useState(false);
 
   const { data, error, loading } = useFetch(`/api/items/${params.id}`);
@@ -99,5 +99,3 @@ function Item({ params }) {
     </main>
   );
 }
-
-export default Item;
