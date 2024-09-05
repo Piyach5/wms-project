@@ -7,13 +7,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 export default function Home() {
-  const { data: items } = useFetch("/inventory/api/items");
+  const { data: items } = useFetch("/api/items");
 
-  const options = [
-    { option: "inbound", href: "/" },
-    { option: "inventory", href: "/" },
-    { option: "outbound", href: "/" },
-  ];
+  const options = [{ option: "create new item", href: "/createItem" }];
   return (
     <main className="flex flex-row">
       <SideBar options={options} />

@@ -1,5 +1,4 @@
 import connectionPool from "@/utils/db";
-import { NextResponse } from "next/server";
 
 export async function PUT(request) {
   const itemData = await request.json();
@@ -9,7 +8,7 @@ export async function PUT(request) {
       [itemData.upc]
     );
     if (!checkUpc.rows[0]) {
-      return NextResponse.json(
+      return Response.json(
         {
           message: "Item not found",
         },
@@ -22,11 +21,11 @@ export async function PUT(request) {
        WHERE upc = $2`,
         [itemData.quantity, itemData.upc]
       );
-      return NextResponse.json({
+      return Response.json({
         message: "Data Updated Succeessfully",
       });
     }
   } catch (err) {
-    return NextResponse.json({ message: err.message });
+    return Response.json({ message: err.message });
   }
 }

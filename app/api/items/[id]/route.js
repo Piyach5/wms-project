@@ -1,5 +1,4 @@
 import connectionPool from "@/utils/db";
-import { NextResponse } from "next/server";
 import { uploadFile } from "@/utils/supabase.config";
 
 export async function GET(request, { params }) {
@@ -9,12 +8,12 @@ export async function GET(request, { params }) {
       `SELECT *, items.id FROM items INNER JOIN categories ON categories.id = items.categories WHERE items.id = $1`,
       [itemId]
     );
-    return NextResponse.json({
+    return Response.json({
       message: "Data Read Succeessfully",
       data: result.rows,
     });
   } catch (err) {
-    return NextResponse.json({ message: err.message });
+    return Response.json({ message: err.message });
   }
 }
 
@@ -51,12 +50,12 @@ export async function PUT(request, { params }) {
         itemId,
       ]
     );
-    return NextResponse.json(
+    return Response.json(
       { message: "Data Updated Successfully" },
       { status: 200 }
     );
   } catch (err) {
-    return NextResponse.json({ message: err.message });
+    return Response.json({ message: err.message });
   }
 }
 
@@ -64,11 +63,11 @@ export async function DELETE(request, { params }) {
   const itemId = params.id;
   try {
     await connectionPool.query(`DELETE FROM items WHERE id = $1`, [itemId]);
-    return NextResponse.json(
+    return Response.json(
       { message: "Data Deleted Successfully" },
       { status: 200 }
     );
   } catch (err) {
-    return NextResponse.json({ message: err.message });
+    return Response.json({ message: err.message });
   }
 }
