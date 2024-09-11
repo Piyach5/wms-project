@@ -1,3 +1,23 @@
+This is Easy Warehouse!
+
+Easy Warehouse is my WMS web application to focus onto easy-to-use principle, no complexity, from inbound to inventory management to outbound.
+
+#Main feature
+
+-Inbound (receive item by enter UPC number, only can receive UPC number within exisiting item list.).
+-Inventory (Look up for an item list, able to click on each item to see for more item detail, update item detail and delete specific item).
+-Order (In development).
+-Outbound (You can pick item by its UPC number, zero stock and over-pick is not allowed).
+-Dashboard (Items summary chart).
+-Create item (Create new item with image upload function).
+
+This Web App is still in development, more features soon!
+
+This App is inspired by my expriences as Warehouse Supervisor, sometimes WMS application is too technical to use, as though my app may be not relate to all WMS priciples, but
+I'm sure it's easy to use and anyone without WMS knowledge can use this app easily.
+
+Tech Stack: Next.JS, SQL (Supabase on Postgresql), Node.JS, Tailwind CSS, ShadCN
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
