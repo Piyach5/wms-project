@@ -18,9 +18,6 @@ Easy Warehouse is my WMS web application to focus onto easy-to-use principle, no
 
 This Web App is still in development, more features soon!
 
-This App is inspired by my expriences as Warehouse Supervisor, sometimes WMS application is too technical to use, as though my app may be not relate to all WMS priciples, but
-I'm sure it's easy to use and anyone without WMS knowledge can use this app easily.
-
 Tech Stack: Next.JS, SQL (Supabase on Postgresql), Node.JS, Tailwind CSS, ShadCN
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
