@@ -5,10 +5,15 @@ Easy Warehouse is my WMS web application to focus onto easy-to-use principle, no
 #Main feature
 
 -Inbound (receive item by enter UPC number, only can receive UPC number within exisiting item list.).
--Inventory (Look up for an item list, able to click on each item to see for more item detail, update item detail and delete specific item).
+
+-Inventory (Look up for an item list, search item, able to click on each item to see for more item detail, update item detail and delete specific item).
+
 -Order (In development).
+
 -Outbound (You can pick item by its UPC number, zero stock and over-pick is not allowed).
+
 -Dashboard (Items summary chart).
+
 -Create item (Create new item with image upload function).
 
 This Web App is still in development, more features soon!
