@@ -26,7 +26,7 @@ export default function Inbound() {
       toast.success("Updated successfully!");
     } catch {
       setLoading(false);
-      toast.error("Item not found!");
+      toast.error("Item not found or data missing!");
     }
   };
 

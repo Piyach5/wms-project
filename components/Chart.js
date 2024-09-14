@@ -9,7 +9,7 @@ export default function GoogleChart(items) {
     title: "Items",
     hAxis: { title: "Item", titleTextStyle: { color: "#333" } },
     vAxis: { minValue: 0 },
-    chartArea: { width: "80%", height: "70%" },
+    chartArea: { width: "100%", height: "100%" },
   };
 
   return (
