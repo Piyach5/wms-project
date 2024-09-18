@@ -94,7 +94,9 @@ export default function OrderList(data) {
                 <TableRow
                   className="cursor-pointer"
                   key={item.id}
-                  onClick={() => window.location.replace(`/orders/${item.id}`)}
+                  onClick={() => {
+                    window.location.replace(`/orders/${item.id}`);
+                  }}
                 >
                   <TableCell className="text-center">{item.id}</TableCell>
                   <TableCell>{item.receiver}</TableCell>

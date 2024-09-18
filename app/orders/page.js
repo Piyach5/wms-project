@@ -16,7 +16,7 @@ export default function Orders() {
       <SideBar options={options} />
       <div className="w-screen flex flex-col px-20 py-10 bg-secondary">
         <h2 className="text-secondary-foreground text-left font-secondary font-extrabold">
-          Orders
+          Order List
         </h2>
         {loading || data == null ? (
           <Box
