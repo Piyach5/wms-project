@@ -7,7 +7,7 @@ export async function GET(request) {
       `SELECT *, items.id FROM items INNER JOIN categories ON categories.id = items.categories`
     );
     return Response.json({
-      message: "Data Read Succeessfully",
+      message: "Data Read Successfully",
       data: result.rows,
     });
   } catch (err) {

@@ -9,7 +9,10 @@ export default function useFetch(path, options = {}) {
   const getData = async () => {
     setLoading(true);
     try {
-      const response = await axios(`http://localhost:3000${path}`, options);
+      const response = await axios(
+        `https://easywarehouse.vercel.app${path}`,
+        options
+      );
       const result = response.data.data;
       setData(result);
       setLoading(false);

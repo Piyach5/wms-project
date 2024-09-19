@@ -51,19 +51,27 @@ const formSchema = z.object({
   ),
 });
 
-export default function CreateOrderForm() {
+export default function UpdateOrder(data) {
   const [loading, setLoading] = useState(false);
 
-  const { data } = useFetch("/api/items");
+  const { id, receiver, address, phone_number, email } = data.data[1][0];
+
+  const { data: items } = useFetch("/api/items");
+
+  const orderItems = [];
+
+  data.data[0].map((item) =>
+    orderItems.push({ item: item.item_id, quantity: item.quantity })
+  );
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      receiver: "",
-      address: "",
-      phone_number: "",
-      email: "",
-      items: [{ item: 0, quantity: 1 }],
+      receiver: receiver,
+      address: address,
+      phone_number: phone_number,
+      email: email,
+      items: orderItems,
     },
   });
 
@@ -84,16 +92,16 @@ export default function CreateOrderForm() {
     formData.append("items", JSON.stringify(values.items));
 
     try {
-      await axios.post(
-        "https://easywarehouse.vercel.app/api/orders",
+      await axios.put(
+        `https://easywarehouse.vercel.app/api/orders/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      toast.success("Order Created!");
+      toast.success("Order Updated!");
       setLoading(false);
-      setTimeout(() => window.location.replace("/orders"), 3000);
+      setTimeout(() => window.location.replace(`/orders/${id}`), 3000);
     } catch (err) {
       setLoading(false);
       toast.error(err.response.data.message);
@@ -127,7 +135,7 @@ export default function CreateOrderForm() {
                 <textarea
                   placeholder="Enter receiver's address"
                   {...field}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   rows={4}
                 />
               </FormControl>
@@ -185,7 +193,7 @@ export default function CreateOrderForm() {
                       {...field}
                       className="block w-full p-3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     >
-                      {data?.map((item) => (
+                      {items?.map((item) => (
                         <option key={item.id} value={item.id}>
                           {item.title}
                         </option>

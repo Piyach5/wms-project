@@ -1,8 +1,8 @@
 "use client";
 
 import SideBar from "@/components/SideBar";
-import ItemsChart from "@/components/ItemsChart";
-import OrdersChart from "@/components/OrdersChart";
+import ItemChart from "@/components/ItemChart";
+import OrderChart from "@/components/OrderChart";
 import useFetch from "@/hooks/useFetch";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -29,13 +29,13 @@ export default function Home() {
                 <h2 className="p-5 font-bold text-secondary-foreground">
                   Item Chart
                 </h2>
-                {items && <ItemsChart items={items} />}
+                {items && <ItemChart items={items} />}
               </div>
               <div className="text-center">
                 <h2 className="p-5 font-bold text-left text-secondary-foreground">
                   Order Chart
                 </h2>
-                {orders && <OrdersChart orders={orders} />}
+                {orders && <OrderChart orders={orders} />}
               </div>
             </div>
           ) : (

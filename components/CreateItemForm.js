@@ -78,7 +78,7 @@ export default function CreateItemForm() {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:3000/api/items", values, {
+      await axios.post("https://easywarehouse.vercel.app/api/items", values, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       toast.success("Item Created!");

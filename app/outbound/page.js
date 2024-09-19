@@ -15,13 +15,15 @@ export default function Outbound() {
   const [quantity, setQuantity] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const options = [{ option: "complete order", href: "/" }];
+  const options = [
+    { option: "complete order", href: "/outbound/completeOrder" },
+  ];
 
   const updateItem = async (e, data) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put("http://localhost:3000/api/items/pick", data);
+      await axios.put("https://easywarehouse.vercel.app/api/items/pick", data);
       setLoading(false);
       toast.success("Pick up item(s) successfully");
     } catch (err) {
@@ -30,7 +32,7 @@ export default function Outbound() {
         toast.error("Out of Stock!");
       } else {
         setLoading(false);
-        toast.error("Item not found!");
+        toast.error("Item not found or missing data!");
       }
     }
   };

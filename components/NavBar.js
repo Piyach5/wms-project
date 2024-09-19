@@ -13,7 +13,6 @@ export default function NavBar() {
           className="rounded-full w-auto h-auto"
         />
         <span className="text-green-500 font-extrabold">EASY WAREHOUSE</span>
-        <span className="text-black font-extrabold">MENU</span>
       </div>
     </>
   );

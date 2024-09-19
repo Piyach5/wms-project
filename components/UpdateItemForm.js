@@ -96,9 +96,13 @@ export default function UpdateItem(data) {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      await axios.put(`http://localhost:3000/api/items/${id}`, values, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.put(
+        `https://easywarehouse.vercel.app/api/items/${id}`,
+        values,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       toast.success("Item Updated Successfully!");
       setLoading(false);
       setTimeout(() => window.location.replace(`/inventory/${id}`));

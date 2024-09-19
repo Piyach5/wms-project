@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
       [itemId]
     );
     return Response.json({
-      message: "Data Read Succeessfully",
+      message: "Data Read Successfully",
       data: result.rows,
     });
   } catch (err) {

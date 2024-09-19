@@ -1,6 +1,6 @@
 import { Chart } from "react-google-charts";
 
-export default function ItemsChart(items) {
+export default function ItemChart(items) {
   const itemData = [["Items", "Quantity"]];
 
   items.items.map((item) => itemData.push([item.title, Number(item.quantity)]));

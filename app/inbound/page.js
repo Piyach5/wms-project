@@ -21,7 +21,10 @@ export default function Inbound() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put("http://localhost:3000/api/items/receive", data);
+      await axios.put(
+        "https://easywarehouse.vercel.app/api/items/receive",
+        data
+      );
       setLoading(false);
       toast.success("Updated successfully!");
     } catch {

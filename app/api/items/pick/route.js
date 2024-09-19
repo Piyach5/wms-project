@@ -32,7 +32,7 @@ export async function PUT(request) {
         [itemData.quantity, itemData.upc]
       );
       return Response.json({
-        message: "Data Updated Succeessfully",
+        message: "Data Updated Successfully",
       });
     }
   } catch (err) {

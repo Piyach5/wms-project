@@ -20,7 +20,9 @@ export default function Item({ params }) {
 
   const deleteItem = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/items/${params.id}`);
+      await axios.delete(
+        `https://easywarehouse.vercel.app/api/items/${params.id}`
+      );
       toast.success("Item Deleted!");
       setTimeout(() => window.location.replace("/inventory"), 3000);
     } catch (err) {

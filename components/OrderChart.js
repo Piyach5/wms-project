@@ -1,8 +1,8 @@
 import { Chart } from "react-google-charts";
 
-export default function OrdersChart(orders) {
+export default function OrderChart(orders) {
   const orderData = [
-    ["Order Number", "Receiver", "Phone Number", "Created Date"],
+    ["Order Number", "Receiver", "Phone Number", "Created Date", "Status"],
   ];
 
   orders.orders.map((item) => {
@@ -12,6 +12,7 @@ export default function OrdersChart(orders) {
       item.receiver,
       item.phone_number,
       createdDate.toLocaleString("en-GB", { timeZone: "UTC" }),
+      item.is_completed ? "Complete" : "Incomplete",
     ]);
   });
 
