@@ -22,3 +22,16 @@ export async function GET(request, { params }) {
     return Response.json({ message: err.message });
   }
 }
+
+export async function DELETE(request, { params }) {
+  const orderId = params.id;
+  try {
+    await connectionPool.query(`DELETE FROM orders WHERE id = $1`, [orderId]);
+    return Response.json(
+      { message: "Data Deleted Successfully" },
+      { status: 200 }
+    );
+  } catch (err) {
+    return Response.json({ message: err.message });
+  }
+}

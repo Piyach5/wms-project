@@ -9,7 +9,7 @@ import OrderList from "@/components/OrderList";
 export default function Orders() {
   const { data, error, loading } = useFetch("/api/orders");
 
-  const options = [{ option: "create new order", href: "/" }];
+  const options = [{ option: "create new order", href: "/createOrder" }];
 
   return (
     <main className="flex flex-row">

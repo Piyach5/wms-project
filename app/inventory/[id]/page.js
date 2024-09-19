@@ -8,6 +8,8 @@ import { useState } from "react";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Item({ params }) {
   const [isClick, setIsClick] = useState(false);
@@ -19,13 +21,17 @@ export default function Item({ params }) {
   const deleteItem = async () => {
     try {
       await axios.delete(`http://localhost:3000/api/items/${params.id}`);
+      toast.success("Item Deleted!");
+      setTimeout(() => window.location.replace("/inventory"), 3000);
     } catch (err) {
+      toast.error(err.message);
       console.log(err.message);
     }
   };
 
   return (
     <main className="flex flex-row">
+      <ToastContainer />
       <SideBar options={options} />
       <div className="w-full flex flex-col px-20 py-10 bg-secondary">
         {loading || data == null ? (

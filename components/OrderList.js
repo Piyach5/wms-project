@@ -98,11 +98,21 @@ export default function OrderList(data) {
                     window.location.replace(`/orders/${item.id}`);
                   }}
                 >
-                  <TableCell className="text-center">{item.id}</TableCell>
-                  <TableCell>{item.receiver}</TableCell>
-                  <TableCell>{item.address}</TableCell>
-                  <TableCell>{item.phone_number}</TableCell>
-                  <TableCell>{item.email}</TableCell>
+                  <TableCell className="max-w-[20ch] truncate text-center">
+                    {item.id}
+                  </TableCell>
+                  <TableCell className="max-w-[20ch] truncate">
+                    {item.receiver}
+                  </TableCell>
+                  <TableCell className="max-w-[20ch] truncate">
+                    {item.address}
+                  </TableCell>
+                  <TableCell className="max-w-[20ch] truncate">
+                    {item.phone_number}
+                  </TableCell>
+                  <TableCell className="max-w-[20ch] truncate">
+                    {item.email}
+                  </TableCell>
                 </TableRow>
               ))}
         </TableBody>
