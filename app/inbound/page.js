@@ -21,6 +21,7 @@ export default function Inbound() {
     e.preventDefault();
     setLoading(true);
     try {
+      console.log(data);
       if (data < 1) {
         setLoading(false);
         toast.error("Quantity must be at least 1!");
