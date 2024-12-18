@@ -28,7 +28,9 @@ export default function OrderList(data) {
       ? data.data.filter(
           (item) =>
             item.receiver.toLowerCase().includes(input.toLowerCase()) ||
-            item.address.toLowerCase().includes(input)
+            item.address.toLowerCase().includes(input) ||
+            item.is_completed === true ||
+            item.is_completed === false
         )
       : data.data;
     setItems(items);
@@ -74,6 +76,10 @@ export default function OrderList(data) {
         onChange={(e) => setInput(e.target.value)}
         className="my-10"
       />
+      <div className="flex flex-row gap-5">
+      <button onClick={() => {setInput(true)}>Completed Order(s)</button>
+      <button onClick={() => {setInput(false)}>Incompleted Order(s)</button>
+      </div>    
       <Table>
         <TableHeader>
           <TableRow>
