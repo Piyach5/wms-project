@@ -36,7 +36,6 @@ export default function OrderList(data) {
                item.address.toLowerCase().includes(input));
             })
       : data.data;
-    console.log(input);
     setItems(items);
     setPage(1);
   }, [input]);
@@ -80,9 +79,10 @@ export default function OrderList(data) {
         onChange={(e) => setInput(e.target.value)}
         className="my-10"
       />
-      <div className="flex flex-row gap-5">
+      <div className="flex flex-row justify-center gap-5 mb-10">
       <Button onClick={() => setInput(true)}>Completed</Button>
       <Button onClick={() => setInput(false)}>Incompleted</Button>
+      <Button onClick={() => setInput(null)}>Incompleted</Button>
       </div>    
       <Table>
         <TableHeader>
