@@ -82,7 +82,7 @@ export default function OrderList(data) {
       <div className="flex flex-row justify-center gap-5 mb-10">
       <Button onClick={() => setInput(true)}>Completed</Button>
       <Button onClick={() => setInput(false)}>Incompleted</Button>
-      <Button onClick={() => setInput(null)}>Incompleted</Button>
+      <Button onClick={() => setInput(null)}>All</Button>
       </div>    
       <Table>
         <TableHeader>
