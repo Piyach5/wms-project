@@ -29,12 +29,13 @@ export default function OrderList(data) {
       ? data.data.filter(
           (item) =>
             {if (typeof input === "boolean") {
-            item.is_completed === input;
+            return item.is_completed === input;
             }
-            item.receiver.toLowerCase().includes(input.toLowerCase()) ||
-            item.address.toLowerCase().includes(input)
-        )
-      : data.data;}
+            return 
+              (item.receiver.toLowerCase().includes(input.toLowerCase()) ||
+               item.address.toLowerCase().includes(input));
+            })
+      : data.data;
     setItems(items);
     setPage(1);
   }, [input]);
