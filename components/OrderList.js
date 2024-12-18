@@ -28,7 +28,7 @@ export default function OrderList(data) {
     const items = input
       ? data.data.filter(
           (item) =>
-            {if (typeof input === "boolean") {
+            {if (typeof input === "boolean" || (input === false && input != null)) {
             return item.is_completed === input;
             }
             return 
