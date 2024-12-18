@@ -25,10 +25,10 @@ export default function OrderList(data) {
   const [input, setInput] = useState(null);
 
   useEffect(() => {
-    const items = input
+    const items = input || input === false
       ? data.data.filter(
           (item) =>
-            {if (typeof input === "boolean" || (input === false && input != null)) {
+            {if (typeof input === "boolean") {
             return item.is_completed === input;
             }
             return 
