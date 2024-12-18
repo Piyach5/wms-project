@@ -30,8 +30,7 @@ export default function OrderList(data) {
           (item) =>
             item.receiver.toLowerCase().includes(input.toLowerCase()) ||
             item.address.toLowerCase().includes(input) ||
-            item.is_completed === true ||
-            item.is_completed === false
+            item.is_completed === input
         )
       : data.data;
     setItems(items);
