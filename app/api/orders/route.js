@@ -3,7 +3,7 @@ import connectionPool from "@/utils/db";
 export async function GET(request) {
   try {
     const result = await connectionPool.query(
-      `SELECT * FROM orders ORDER BY created_at DESC`
+      `SELECT * FROM orders WHERE is_completed = false ORDER BY created_at DESC`
     );
     return Response.json({
       message: "Data Read Successfully",
