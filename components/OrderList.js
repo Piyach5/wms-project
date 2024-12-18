@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 
 export default function OrderList(data) {
@@ -77,8 +78,8 @@ export default function OrderList(data) {
         className="my-10"
       />
       <div className="flex flex-row gap-5">
-      <button onClick={() => {setInput(true)}>Completed Order(s)</button>
-      <button onClick={() => {setInput(false)}>Incompleted Order(s)</button>
+      <Button onClick={() => setInput(true)}>Completed</Button>
+      <Button onClick={() => setInput(false)}>Incompleted</Button>
       </div>    
       <Table>
         <TableHeader>
