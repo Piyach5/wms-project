@@ -29,6 +29,7 @@ export default function OrderList(data) {
       ? data.data.filter(
           (item) =>
             {if (typeof input === "boolean") {
+              console.log(input);
             return item.is_completed === input;
             }
             return 
