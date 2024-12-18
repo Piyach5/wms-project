@@ -24,14 +24,14 @@ export default function Inbound() {
       if (data < 1) {
         setLoading(false);
         toast.error("Quantity must be at least 1!");
-        return;
-      }
-      await axios.put(
+      } else {
+        await axios.put(
         "https://easywarehouse.vercel.app/api/items/receive",
         data
       );
       setLoading(false);
       toast.success("Updated successfully!");
+      }
     } catch {
       setLoading(false);
       toast.error("Item not found or data missing!");
