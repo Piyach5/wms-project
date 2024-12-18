@@ -23,9 +23,14 @@ export default function Outbound() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put("https://easywarehouse.vercel.app/api/items/pick", data);
-      setLoading(false);
-      toast.success("Pick up item(s) successfully");
+      if (data.quantity < 1) {
+        setLoading(false);
+        toast.error("Quantity must be at least 1!");
+      } else {
+        await axios.put("https://easywarehouse.vercel.app/api/items/pick", data);
+        setLoading(false);
+        toast.success("Pick up item(s) successfully");
+      }
     } catch (err) {
       if (err.status === 400) {
         setLoading(false);
