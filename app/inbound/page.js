@@ -21,6 +21,11 @@ export default function Inbound() {
     e.preventDefault();
     setLoading(true);
     try {
+      if (data < 1) {
+        setLoading(false);
+        toast.error("Quantity must be at least 1!");
+        return;
+      }
       await axios.put(
         "https://easywarehouse.vercel.app/api/items/receive",
         data
