@@ -29,7 +29,6 @@ export default function OrderList(data) {
       ? data.data.filter(
           (item) =>
             {if (typeof input === "boolean") {
-              console.log(input);
             return item.is_completed === input;
             }
             return 
@@ -37,6 +36,7 @@ export default function OrderList(data) {
                item.address.toLowerCase().includes(input));
             })
       : data.data;
+    console.log(input);
     setItems(items);
     setPage(1);
   }, [input]);
